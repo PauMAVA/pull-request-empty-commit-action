@@ -1,0 +1,33 @@
+name: 'Create empty commit in PR'
+description: 'Create an empty commit in the target PR. This will cause PR checks to be reset.'
+inputs:
+  github_token:
+    description: A GitHub token.
+    required: false
+    default: ${{ github.token }}
+  repository:
+    description: The owner, slash repository name.
+    required: false
+    default: ${{ github.repository }}
+  issue_number:
+    description: The number of the issue or pull request.
+    required: false
+  message:
+    description: The commit message.
+    required: true
+  email:
+    description: The commit author email address.
+    required: true
+  name:
+    description: The commit author name.
+    required: true
+  fail_on_error:
+    description: Whether the action fails or not when getting errors. [true,false]
+    default: 'false'
+    required: false
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+branding:
+  icon: git-commit
+  color: black
