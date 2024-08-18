@@ -27,12 +27,13 @@ async function run() {
 
     const {data} = await client.rest.pulls.get({repo, owner, issueNumber});
     core.info(`Fetch pull request ${issueNumber} for ${owner}/${repo}. Resulting data: ${JSON.stringify(data)}`);
-    const ref = data?.head?.ref;
-    const commit_sha = data?.merge_commit_sha;
+    const ref = data[0].head.ref;
+    const commit_sha = data[0].head.sha;
 
     if (!commit_sha || !ref) {
       throw new Error(`failed to get basic pull_request data. commit_sha: ${commit_sha}, ref: ${ref}`);
     }
+    core.info(`PR HEAD ${commit_sha} @ ${ref}`);
 
     const {
       data: {tree}
