@@ -26,7 +26,7 @@ async function run() {
     const client = getOctokit(githubToken);
 
     const {data} = await client.rest.pulls.get({repo, owner, issueNumber});
-    core.info(`Fetch pull request ${issueNumber} for ${owner}/${repo}. Resulting data: ${data}`);
+    core.info(`Fetch pull request ${issueNumber} for ${owner}/${repo}. Resulting data: ${JSON.stringify(data)}`);
     const ref = data?.head?.ref;
     const commit_sha = data?.merge_commit_sha;
 
