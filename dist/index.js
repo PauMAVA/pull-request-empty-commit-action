@@ -31100,9 +31100,9 @@ async function run() {
   try {
     const githubToken = core.getInput('github_token');
 
-    const message = getInput('message');
-    const email = getInput('email');
-    const name = getInput('name');
+    const message = core.getInput('message');
+    const email = core.getInput('email');
+    const name = core.getInput('name');
     
     const fullRepoName = core.getInput('repository') === '' ? context.repository.full_name : core.getInput('repository');
     const [owner, repo] = fullRepoName.split('/');
