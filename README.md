@@ -12,7 +12,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: PauMAVA/pull-request-empty-commit-action@v1.0.0
+      - uses: PauMAVA/pull-request-empty-commit-action@v1.0.4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           message: 'The commit message'
